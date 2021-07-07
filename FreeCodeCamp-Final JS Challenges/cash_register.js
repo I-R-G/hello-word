@@ -1,47 +1,66 @@
+/*
+Cash RegisterPassed
+Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument 
+(price), payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
+
+cid is a 2D array listing available currency.
+
+The checkCashRegister() function should always return an object with a status key and a change key.
+
+Return {status: "INSUFFICIENT_FUNDS", change: []} if cash-in-drawer is less than the change due, or if you 
+cannot return the exact change.
+
+Return {status: "CLOSED", change: [...]} with cash-in-drawer as the value for the key change if it is equal 
+to the change due.
+
+Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest 
+to lowest order, as the value of the change key.
+
+*/
+
 function checkCashRegister(price, cash, cid) {
-    /*Cria uma variavel com todo dinheiro do caixa e outra trocando o [nome, valor total de cada unidade] por [valor unidade , numero de notas]*/
+//Total cash and transform [name, total] to [unit value, numb of bills]
+
       let totalCash = sumCash(cid);
       let unitAndTotalAmmount = namesForValues(cid);
       let change = cash - price
-    //Variavel para receber o array com nome e valor total da unidade dada de troco
+//Creates array to receive name and total ammount given in change
       let nameAndTotalGiven = []
-    //Objeto que recebera a resposta
+//Object which will receive the answer
       let result = {status: null, change: []};
       
-    //Se total em caixa for menor que o troco devido ja para por aqui e retorna o objeto com a modificação abaixo
+//If total cash < change stops here
       if(totalCash < change){
         result.status = "INSUFFICIENT_FUNDS"
     
-    // Se o total em caixa for igual ao troco devido para aqui e retorna o objeto com as modificações abaixo
+//If total cash === change stops here
       }else if(totalCash === change){
         result.status = "CLOSED"
         result.change = cid
     
-    //Se total em caixa for maior que o troco devido 
+//If total cash > change 
       }else if (totalCash > change){
-    //Laço do array [valor da unidade, numero de notas], do maior valor da unidade para o menor
         for(let i = unitAndTotalAmmount.length -1; i>=0; i--){
-    //Atribui valor da unidade e numero de unidades a constantes
+    
           let currentChangeUnit = unitAndTotalAmmount[i][0];
           let numOfBills= unitAndTotalAmmount[i][1];
-    //Cria letante para armazenar o numero de notas dada.
           let numOfBillsGiven = 0
-    //Enquanto troco for maior que o valor da unidade atual e o numero de notas da mesma unidade for maior que zero, da mais uma nota e retira uma nota do numero de notas que se possui no caixa da respectiva unidade. Ao mesmo tempo vai recalculando o troco devido apos dar uma nota.
+//While change > than value of current unit and numb of bills > 0, gives one more bill and subtract from the total ammount available also recalculates the curren owned change 
           while(change >= currentChangeUnit && numOfBills >0){
             numOfBills--
             numOfBillsGiven++
             change = Math.round((change - currentChangeUnit)*100)/100
           }
-    // Cria a letante com o total do troco dado ao final do processo
+
           let totalOfCurrentCurrencyGiven = 1
-          totalOfCurrentCurrencyGiven = numOfBillsGiven*currentChangeUnit
-    //Se o total do troco dado for maior que o troco devido, joga pro array nameAndTotalGiven o [nome da unidade, valor total dessa unidade dada de troco]. E no final retorna o objeto com as seguintes modificações
+          totalOfCurrentCurrencyGiven = numOfBillsGiven * currentChangeUnit
+    
           if(totalOfCurrentCurrencyGiven > change){
           nameAndTotalGiven.push([cid[i][0],totalOfCurrentCurrencyGiven])
           
             result.status = "OPEN"
             result.change = nameAndTotalGiven
-    //Caso o troco total dado seja menor que o troco devido, retorna o objeto abaixo
+    
           }else if (totalOfCurrentCurrencyGiven < change){
             
             result.status = "INSUFFICIENT_FUNDS"
@@ -51,7 +70,7 @@ function checkCashRegister(price, cash, cid) {
       return result
     }
     
-    // soma todo o dinheiro do caixa
+    //Helper function to sum all total available cash
     function sumCash(arr) {
       return arr
       .flat()
@@ -59,7 +78,7 @@ function checkCashRegister(price, cash, cid) {
       .reduce((sumOfAll, sum) => (sumOfAll + sum))
     }
     
-    // cria um novo array mudando o nome da moeda para o seu respectivo valor e muda o valor total em caixa para numero de unidades daquele valor em caixa
+    // Change name of each the bill for its unitary value and change the total ammount of that unit for the respective numbers of bill 
     function namesForValues(arr) {
       let currencyUnit = {
         "PENNY": 0.01,

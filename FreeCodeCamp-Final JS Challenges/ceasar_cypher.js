@@ -1,28 +1,45 @@
+/* 
+Caesars CipherPassed
+
+One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. 
+
+In a shift cipher the meanings of the letters are shifted by some set amount.
+
+A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 places. 
+
+Thus A ↔ N, B ↔ O and so on.
+
+Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+
+All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but 
+do pass them on.
+*/
+
 function rot13(str) {
-// pega codigo ASCII somente de [A-Z]
+// Limit ASCII code from A-Z
   let min = 65;
   let max = 90;
-//cria Array para receber em decimal
+//Create array to receive the letters converted
   let decimalArr = [];
-//cria Array para receber final convertido em letra apos aplicao do rot13
+//Create array to receive the letters after rot13 application
+
   let strConvArr = [];
-// percorre os elementos da string e joga para decimalArray em forma de ASC II 
   for(let i = 0; i < str.length; i++){
     decimalArr.push(str.charCodeAt(i))
   }
-//percorre os elementos de decimalArr e aplica a transformacao rot13 aos elementos
+//Sum + 13 to each element charCode
   for(let j = 0; j < decimalArr.length; j++){
     if(decimalArr[j]>=min && decimalArr[j]<=90){
       decimalArr.splice([j],1,decimalArr[j]+13)  
     }
-// se passar do caracter [Z] retorna ao [A] e soma o que faltou
+// If is bigger than 90 go back to 65 and sum the difference 
     if(decimalArr[j] > max){
       decimalArr[j] = ((decimalArr[j] - max) + (min-1))
     }
-// apos aplicao do rot13 passa os elementos convertidos em letra para o array strConvArr
+//Convert in letters again
     strConvArr.push(String.fromCharCode(decimalArr[j])) 
   }
-// transforma o array em uma string 
+//Convert the array into a string 
   return strConvArr.join("")
 }
 

@@ -9,7 +9,6 @@ difference of the two vectors’ (this and the parameter) x and y values.
 Add a getter property length to the prototype that computes the length of the vector—that is, the distance of the point (x, y) from the 
 origin (0, 0).
 */
-// Your code here.
 
 class Vec {
     constructor(x,y){

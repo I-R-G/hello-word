@@ -1,0 +1,89 @@
+html{
+    background: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") fixed;
+    background-size: cover;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+}
+
+body{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    color: white;
+}
+
+hr{
+    position: relative;
+    color: white;
+    width: 25rem;
+    top: -10px;
+}
+
+#quote-box{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    height: 15rem;
+    width: 25rem;
+}
+
+.output{
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    text-align: center;
+}
+
+#text{
+    display: flex;
+    flex-direction: column;
+    height: 7rem;
+    justify-content: center;
+    text-align: justify;
+}
+
+#author{
+    text-align: right;
+}
+
+.buttons{
+    display: flex;
+    width: 80%;
+    height: 1.5rem;
+    align-self: center;
+    padding-top: 2rem;
+    transform: translateY(-200px);
+}
+
+#tweet-quote{
+    flex: 1;
+}
+
+.fa-twitter{
+    color: white;
+    position: relative;
+    bottom: 7px; 
+}
+
+.fa-twitter:hover{
+    transform: scale(1.1);
+}
+
+#new-quote{
+    border-radius: 5px;
+    background: white;
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+}
+
+#new-quote:hover{
+    transform: scale(1.1);
+}
+
+

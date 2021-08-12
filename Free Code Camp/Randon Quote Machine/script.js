@@ -5,8 +5,6 @@ const tweet = document.querySelector("#tweet-quote")
 const link = document.querySelector("a")
 const url = "https://api.quotable.io/random"
 
-
-
 let quoteText = ""
 let authorName = ""
 let quoteSize
@@ -23,19 +21,18 @@ async function getQuoteAndAuthor(){
     author.textContent = `${authorName}`
 }
 
+
 function tweetQuote(){
     let tweetText = `${quoteText} \n\n "${authorName}"`
     if(isNaN(quoteSize)){
-        alert('No quote to tweet. Click the "New quote" button to get a quote first !!!')
-       
+        alert('No quote to tweet. Click the "New quote" button to get a quote first !!!') 
     }
     else if (quoteSize > 140) {
         alert('Ops, this quote is over 140 characters, too big to tweet !!!')
-       
+        link.removeAttribute("href") 
     }
     else{
         link.href = "https://twitter.com/intent/tweet?text=" + encodeURI(tweetText)
-        link.target = "_blank"
     }
 }
 

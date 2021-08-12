@@ -3,49 +3,23 @@ html{
     background-size: cover;
     font-family: 'Roboto Mono', monospace;
     font-size: 20px;
+    box-sizing: border-box;
 }
 
+*,*::before,*::after{
+    box-sizing: inherit;
+}
 body{
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     height: 100vh;
     align-items: center;
     justify-content: center;
-}
-
-h1{
-    color: white;
-}
-
-hr{
-    position: relative;
-    color: white;
-    width: 25rem;
-    top: -10px;
+    text-align:justify;
 }
 
 #quote-box{
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    height: 15rem;
     width: 25rem;
-}
-
-.output{
-    display: flex;
-    flex-direction: column;
-    height: 10rem;
-    text-align: center;
-}
-
-#text{
-    display: flex;
-    flex-direction: column;
-    height: 7rem;
-    justify-content: center;
-    text-align: justify;
 }
 
 #author{
@@ -54,36 +28,45 @@ hr{
 
 .buttons{
     display: flex;
-    width: 80%;
-    height: 1.5rem;
-    align-self: center;
-    padding-top: 2rem;
-    transform: translateY(-200px);
-}
-
-#tweet-quote{
-    flex: 1;
+    justify-content:space-around;
 }
 
 .fa-twitter{
     color: white;
-    position: relative;
-    bottom: 7px; 
-}
-
-.fa-twitter:hover{
-    transform: scale(1.1);
+    background-color: black;
+    border-radius: 5px;
+    padding: 3px;
 }
 
 #new-quote{
     border-radius: 5px;
-    background: white;
-    font-family: 'Roboto Mono', monospace;
+    color: white;
+    background-color: black;
     border: none;
 }
 
-#new-quote:hover{
-    transform: scale(1.1);
+.mouseover:hover{
+    transform: scale(0.9);
+    transition: .2s;
+    cursor: pointer;
 }
+.mouseover:hover:active{
+    transform: translatey(5px);    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

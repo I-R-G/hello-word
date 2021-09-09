@@ -15,7 +15,6 @@ html{
 body{
     height: 100vh;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -33,14 +32,21 @@ body{
     #drum-machine{
         display: flex;
         flex-direction: column;
-        height:90%;
-        width: 90%;
+        height: 80%;
+        width: 100%;
     }
 
     #display {
         display: grid;
         width: 100%;
     }
+}
+
+@media(max-height: 450px){
+   #drum-machine{
+       height: 90%;
+       width: 50%;
+   }
 }
 
 #display{

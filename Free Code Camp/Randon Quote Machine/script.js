@@ -17,19 +17,19 @@ async function getQuoteAndAuthor(){
     authorName = data.author
     quoteSize = data.length
 
-    quote.textContent = `${quoteText}`
-    author.textContent = `${authorName}`
+    quote.textContent = quoteText
+    author.textContent = authorName
 }
 
 
-function tweetQuote(){
+function tweetQuote(e){
     let tweetText = `${quoteText} \n\n "${authorName}"`
     if(isNaN(quoteSize)){
         alert('No quote to tweet. Click the "New quote" button to get a quote first !!!') 
     }
     else if (quoteSize > 140) {
+        e.preventDefault()
         alert('Ops, this quote is over 140 characters, too big to tweet !!!')
-        link.removeAttribute("href") 
     }
     else{
         link.href = "https://twitter.com/intent/tweet?text=" + encodeURI(tweetText)

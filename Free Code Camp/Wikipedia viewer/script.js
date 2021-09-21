@@ -4,7 +4,7 @@ let topics;
 
 async function getInfo(searchWord){
 
-    const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${searchWord}&gsrlimit=10&prop=pageimages|extracts&exchars=300&exintro&explaintext&exlimit=max&format=json&origin=*`
+    const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${searchWord}&gsrlimit=10&prop=pageimages|extracts&exchars=100&exintro&explaintext&exlimit=max&format=json&origin=*`
     const response = await fetch(url)
     const data = await response.json()
 

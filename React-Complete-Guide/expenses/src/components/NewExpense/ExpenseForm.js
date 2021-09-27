@@ -42,6 +42,18 @@ function ExpenseForm(props) {
       date: new Date(userInput.enteredDate),
     };
 
+    //Create a database using firebase
+    fetch(
+      "https://expenses-controller-97871-default-rtdb.firebaseio.com/expense.json",
+      {
+        method: "POST",
+        body: JSON.stringify(expenseData),
+        headers: {
+          "Content-Type": "Application/json",
+        },
+      }
+    );
+
     props.onSaveExpenseData(expenseData);
 
     //This reset the form fields
@@ -50,7 +62,7 @@ function ExpenseForm(props) {
       enteredAmount: "",
       enteredDate: "",
     });
-    props.toggleBack()
+    props.toggleBack();
   }
 
   return (
@@ -89,7 +101,9 @@ function ExpenseForm(props) {
         </div>
         <div className="new-expense__actions">
           <button type="submit">Add Expense</button>
-          <button type = "button" onClick = {props.toggleBack}>Cancel</button>
+          <button type="button" onClick={props.toggleBack}>
+            Cancel
+          </button>
         </div>
       </div>
     </form>

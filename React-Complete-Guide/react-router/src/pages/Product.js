@@ -1,5 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link , /*useNavigate*/ } from "react-router-dom";//Use navigate replaces useHistory
 
+/*
+const navigate = useNavigate
+
+navigate("/welcome", {replace: true})//route ro redirect and argument to replace or just push the page
+navigate(-1)//or 1 or 2 ... to skip the respective number of pages or go backwards.
+*/
 function Product() {
   return (
     <section>

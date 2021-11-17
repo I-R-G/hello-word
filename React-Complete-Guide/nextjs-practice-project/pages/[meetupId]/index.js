@@ -35,7 +35,7 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false,
+    fallback: "blocking", //true and blocking tell paths that the routes may not be exhausting, false return the error page
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),

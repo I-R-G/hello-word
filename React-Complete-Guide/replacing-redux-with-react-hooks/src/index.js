@@ -1,19 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import { BrowserRouter } from "react-router-dom";
-import ProductProvider from "./context/ProductProvider"
-import configureStore from "./hook-store/products-store";
-import "./index.css";
-import App from "./App";
+import './index.css';
+import App from './App';
+import configureProductsStore from './hooks-store/products-store';
+import configureCounterStore from './hooks-store/counter-store';
 
-configureStore()
+configureProductsStore();
+configureCounterStore();
 
 ReactDOM.render(
-  <ProductProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ProductProvider>,
-  document.getElementById("root")
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
 );
